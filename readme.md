@@ -16,7 +16,7 @@
 ---
 
 ## Business Rules
-- [] Should not be possible to create an account with already existent CPF
+- [X] Should not be possible to create an account with already existent CPF
 - [] Should not be possible to withdraw from an unexistent account
 - [] Should not be able to search for bank statement from an unexistent account
 - [] Should not be able to make withdraw from an unexistent account
