@@ -4,7 +4,7 @@
 
 ### Requisites
 - [X] Should be able to create an account
-- [] Should be able to search for user´s bank statement
+- [X] Should be able to search for user´s bank statement
 - [] Should be able to make a deposit
 - [] Should be able to make a withdraw
 - [] Should be able to search for user´s bank statement by date
