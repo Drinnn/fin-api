@@ -51,8 +51,18 @@ app.post("/accounts", (req, res) => {
 
 app.get("/statements", verifyIfCustomerExists, (req, res) => {
   const { customer } = req;
+  const { date } = req.params;
+  if (date) {
+    const formattedDate = new Date(date + "00:00");
+    const filteredStatement = customer.statement.filter(
+      (operation) =>
+        operation.date.toDateString() === new Date(formattedDate).toDateString()
+    );
 
-  return res.json(customer.statement);
+    return res.json(filteredStatement);
+  } else {
+    return res.json(customer.statement);
+  }
 });
 
 app.post("/deposits", verifyIfCustomerExists, (req, res) => {
