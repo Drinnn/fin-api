@@ -61,6 +61,13 @@ app.put("/accounts", verifyIfCustomerExists, (req, res) => {
 
   return res.send();
 });
+app.delete("/accounts", verifyIfCustomerExists, (req, res) => {
+  const { customer } = req;
+
+  customers.splice(customer, 1);
+
+  return res.send();
+});
 
 app.get("/statements", verifyIfCustomerExists, (req, res) => {
   const { customer } = req;
@@ -76,6 +83,11 @@ app.get("/statements", verifyIfCustomerExists, (req, res) => {
   } else {
     return res.json(customer.statement);
   }
+});
+app.get("/statements/balance", verifyIfCustomerExists, (req, res) => {
+  const { customer } = req;
+
+  return res.json({ balance: getBalance(customer.statement) });
 });
 
 app.post("/deposits", verifyIfCustomerExists, (req, res) => {
