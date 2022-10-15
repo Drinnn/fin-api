@@ -48,6 +48,19 @@ app.post("/accounts", (req, res) => {
 
   res.status(201).send();
 });
+app.get("/accounts", verifyIfCustomerExists, (req, res) => {
+  const { customer } = req;
+
+  return res.json(customer);
+});
+app.put("/accounts", verifyIfCustomerExists, (req, res) => {
+  const { name } = req.body;
+  const { customer } = req;
+
+  customer.name = name;
+
+  return res.send();
+});
 
 app.get("/statements", verifyIfCustomerExists, (req, res) => {
   const { customer } = req;
